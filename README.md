@@ -10,5 +10,5 @@
 
 1. Run the main script
 ```
-python run.py
+python main.py
 ```
