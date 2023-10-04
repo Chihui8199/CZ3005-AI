@@ -1,7 +1,7 @@
 from queue import PriorityQueue
 import time
 
-from lab1.Tasks.data_loader import load_data
+from Tasks.data_loader import load_data
 
 
 # Getting required parameters
