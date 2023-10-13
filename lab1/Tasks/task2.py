@@ -3,8 +3,8 @@ from queue import PriorityQueue
 from Tasks.data_loader import load_data
 
 # Constant Weights decided through trial and error
-COST_WEIGHT = 0.05
-DIST_WEIGHT = 0.95
+COST_WEIGHT = 0.1
+DIST_WEIGHT = 0.9
 
 def ucs_refined_algorithm(G, Dist, Cost, energy_budget, start_node='1', end_node='50'):
     """
