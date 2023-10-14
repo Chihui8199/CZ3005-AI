@@ -4,7 +4,8 @@ from pathlib import Path
 _data = {
     'G': None,
     'Dist': None,
-    'Cost': None
+    'Cost': None,
+    'Coord': None
 }
 
 
@@ -23,4 +24,8 @@ def load_data():
         with open(Path('data') / 'Cost.json', 'r') as file:
             _data['Cost'] = json.load(file)
 
-    return _data['G'], _data['Dist'], _data['Cost']
+    if _data['Coord'] is None:
+        with open(Path('data')/'Coord.json', 'r') as file:
+            _data['Coord'] = json.load(file)
+
+    return _data['G'], _data['Dist'], _data['Cost'], _data['Coord']

@@ -1,12 +1,14 @@
 import Tasks.task1 as t1
 
+import Tasks.task3 as t3
+
 def run():
     # load data to be used by all classes
     message = "\n\nCZ3005 Lab 1 Project Menu\n\n\
     Presets - Start Node: 1, End Node: 50, Energy Budget: 287932 == \n\
     1) UCS: Shortest Distance without Energy Constraint\n\
     2) \n\
-    3) \n\
+    3) A* search Algorithm \n\
     4) Quit\n"
     while True:
         print(message)
@@ -20,6 +22,11 @@ def run():
         if choice == 1:
             print("You chose UCS: Shortest Distance without Energy Constraint")
             t1.run_ucs()
+            input("Press [Enter] to continue...")
+            continue
+        elif choice == 3: 
+            print("You chose A* Search Algorithm")
+            t3.run_astar()
             input("Press [Enter] to continue...")
             continue
         elif choice == 4:
