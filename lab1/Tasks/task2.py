@@ -68,7 +68,7 @@ def ucs_refined_algorithm(G, Dist, Cost, energy_budget, start_node='1', end_node
 def run_ucs_refined(energy_budget):
     try:
         start_time = time.time()
-        G, Dist, Cost = load_data()
+        G, Dist, Cost, Coord = load_data()
         ucs_results = ucs_refined_algorithm(G, Dist, Cost, energy_budget)
         print("Time taken: %s seconds" % (time.time() - start_time))
         shortest_distance = ucs_results[0]
