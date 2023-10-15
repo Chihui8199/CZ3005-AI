@@ -10,71 +10,58 @@ G, Dist, Cost, Coord = load_data()
 
 import numpy as np
 import heapq
+from math import sqrt
 
 
+def heuristic(x,y):
+    return math.sqrt((x[0]-y[0])**2 + (x[1]-y[1])**2)
+
+def a_star(G,root, goal,max_energy):
+
+    # create a priority queue of paths
+    queue = PriorityQueue()
+    queue.put((0, 0, 0,[root]))
+    visited = set()
+    visited.add(root)
+    # iterate over the items in the queue
+    while not queue.empty():
+        # get the highest priority item
+        pair = queue.get()
+        current = pair[3][-1]
+        visited.add(current)
+        if current == goal:
+            return pair
+        # add all the edges to the priority queue
+        for edge in G[current]:
+            if edge not in visited:
+                # create a new path with the node from the edge
+                new_path = list(pair[3])
+                new_path.append(edge)
+                heuristic_func = heuristic(Coord[edge], Coord[goal])
+                edge_pair = ','.join([current,edge])
+
+                if (pair[2]+Cost[edge_pair])<=max_energy:
+                    queue.put((0.9*pair[1]+Dist[edge_pair]+0.1*heuristic_func, pair[1] + Dist[edge_pair], pair[2]+Cost[edge_pair],new_path))
+
+                else:
+                    pass
     
-def euclidean(Coord, source, destination):
-    x1, y1 = Coord[source]
-    x2, y2 = Coord[destination]
-    return ((x1 - x2) ** 2 + (y1 - y2) ** 2) ** 0.5
+    print("There is no path that the energy used is less than", max_energy)
 
-def write_output(path, finalDist, finalEnergy):
-    pathString = '->'.join(path)
-    formattedPathString = '\n'.join(pathString[i:i + 64] for i in range(0, len(pathString), 64))
-    print('Shortest path:')
-    print('\n')
-    print(formattedPathString)
-    print('\n')
-    print('Shortest distance: ' + str(finalDist))
-    print('\n')
-    print('Total energy cost: ' + str(finalEnergy))
+def run_astar():
+    start = time.time()
+    result = a_star(G,'1', '50',287932)
+    print("Time taken: %s seconds" % (time.time() - start))
+    Shortest_path = result[3]
+    cost = result[2]
+    Shortest_distance = result[1]
 
-def run_astar(source='1', destination='50', weight=1.05):
-    energyBudget = 287932
-    w = weight
-    aStarCost = aStarValue = w
-    heap = [(aStarCost, 0, 0, source, [source])]
+    path = ''
+    for i in Shortest_path:
+        path = path + '->' + i
+    path = path[2:]
 
-    costToNode = {source: 0}
-    distToNode = {source: 0}
-    aStarNode = {source: aStarValue}
+    print("Shortest path: ", path)
+    print("Shortest distance: ", Shortest_distance)
+    print("Total energy cost: ", cost)
 
-    finalDist = 0
-    finalEnergy = 0
-    path = []
-
-    found = False
-
-    while heap:
-        aStarCost, currPathCost, currEnergyCost, currNode, prevPath = heapq.heappop(heap)
-        #print(currNode)
-        #print(G["1"])
-        #break
-
-        if currNode == destination:
-            path = prevPath
-            finalEnergy = currEnergyCost
-            finalDist = currPathCost
-            found = True
-            break
-
-        for neighbor in G[currNode]:
-            nextEnergyCost = Cost[currNode + ',' + neighbor]
-            if nextEnergyCost + currEnergyCost > energyBudget:
-                continue
-            nextPathCost = Dist[currNode + ',' + neighbor]
-            nextAStarCost = nextPathCost + w * euclidean(Coord, neighbor, destination)
-            temp = (nextAStarCost, currPathCost + nextPathCost, currEnergyCost + nextEnergyCost, neighbor, prevPath + [neighbor])
-            if temp[0] < aStarNode.get(neighbor, float('inf')) or temp[2] < costToNode.get(neighbor, float('inf')):
-                aStarNode[neighbor] = temp[0]
-                distToNode[neighbor] = temp[1]
-                costToNode[neighbor] = temp[2]
-                heapq.heappush(heap, temp)
-
-    if not found:
-        print('Path not found')
-        return
-
-    write_output(path, str(finalDist), str(finalEnergy))
-    
-    

@@ -34,6 +34,7 @@ def run():
         elif choice == 3: 
             print("You chose A* Search Algorithm")
             t3.run_astar() 
+            input("Press [Enter] to continue...")
         elif choice == 4:
             print("Exiting...")
             break
