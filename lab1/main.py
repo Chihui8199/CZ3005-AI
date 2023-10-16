@@ -1,6 +1,5 @@
 import Tasks.task1 as t1
 import Tasks.task2 as t2
-
 import Tasks.task3 as t3
 
 def run():
@@ -31,6 +30,7 @@ def run():
             t2.run_ucs_refined(energy_budget)
             input("Press [Enter] to continue...")
             continue
+
         elif choice == 3: 
             print("You chose A* Search Algorithm")
             t3.run_astar(energy_budget) 
