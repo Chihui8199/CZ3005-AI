@@ -33,7 +33,7 @@ def run():
             continue
         elif choice == 3: 
             print("You chose A* Search Algorithm")
-            t3.run_astar() 
+            t3.run_astar(energy_budget) 
             input("Press [Enter] to continue...")
         elif choice == 4:
             print("Exiting...")

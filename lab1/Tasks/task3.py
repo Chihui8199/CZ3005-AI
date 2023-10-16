@@ -48,9 +48,9 @@ def a_star(G,root, goal,max_energy):
     
     print("There is no path that the energy used is less than", max_energy)
 
-def run_astar():
+def run_astar(energy_budget):
     start = time.time()
-    result = a_star(G,'1', '50',287932)
+    result = a_star(G,'1', '50',energy_budget)
     print("Time taken: %s seconds" % (time.time() - start))
     Shortest_path = result[3]
     cost = result[2]
