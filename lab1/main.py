@@ -1,5 +1,6 @@
 import Tasks.task1 as t1
 import Tasks.task2 as t2
+import Tasks.task3 as t3
 
 def run():
     # load data to be used by all classes
@@ -8,7 +9,7 @@ def run():
     Presets - Start Node: 1, End Node: 50, Energy Budget: 287932 == \n\
     1) UCS: Shortest Distance without Energy Constraint\n\
     2) Refined UCS: Shortest Distance with Energy Constraint\n\
-    3) \n\
+    3) A* search Algorithm \n\
     4) Quit\n"
     while True:
         print(message)

@@ -28,4 +28,4 @@ def load_data():
         with open(os.path.join(data_dir, 'Cost.json'), 'r') as file:
             _data['Cost'] = json.load(file)
 
-    return _data['G'], _data['Dist'], _data['Cost']
+    return _data['G'], _data['Dist'], _data['Cost'], _data['Coord']
