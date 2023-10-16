@@ -4,7 +4,8 @@ import os
 _data = {
     'G': None,
     'Dist': None,
-    'Cost': None
+    'Cost': None,
+    'Coord': None
 }
 
 # Get the path to the directory where the script is located
@@ -27,5 +28,9 @@ def load_data():
     if _data['Cost'] is None:
         with open(os.path.join(data_dir, 'Cost.json'), 'r') as file:
             _data['Cost'] = json.load(file)
+
+    if _data['Coord'] is None:
+        with open(os.path.join(data_dir, 'Coord.json'), 'r') as file:
+            _data['Coord'] = json.load(file)
 
     return _data['G'], _data['Dist'], _data['Cost'], _data['Coord']

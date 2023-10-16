@@ -43,7 +43,7 @@ def ucs_algo(G, Dist, Cost, start_node='1', end_node='50'):
 def run_ucs():
     try:
         start_time = time.time()
-        G, Dist, Cost = load_data()
+        G, Dist, Cost, Coord = load_data()
         ucs_results = ucs_algo(G, Dist, Cost)
         print("Time taken: %s seconds" % (time.time() - start_time))
         shortest_distance = ucs_results[0]
