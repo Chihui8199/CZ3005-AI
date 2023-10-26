@@ -1,11 +1,4 @@
 %%Define Relations and Rules 
-male(charles).
-male(andrew).
-male(edward).
-
-female(elizabeth).
-female(ann).
-
 offspring(charles,elizabeth).
 offspring(andrew,elizabeth).
 offspring(ann,elizabeth).
