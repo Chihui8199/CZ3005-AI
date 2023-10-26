@@ -6,10 +6,10 @@ male(edward).
 female(elizabeth).
 female(ann).
 
-offspring(charles,elizabeth).
-offspring(andrew,elizabeth).
-offspring(ann,elizabeth).
-offspring(edward,elizabeth).
+child_of(charles,elizabeth).
+child_of(andrew,elizabeth).
+child_of(ann,elizabeth).
+child_of(edward,elizabeth).
 
 younger_than(ann,charles).
 younger_than(andrew,ann).
@@ -32,4 +32,4 @@ ordering_by_birth_and_gender([A|B],SortList):- ordering_by_birth_and_gender(B,Ta
 ordering_by_birth_and_gender([],[]).
 
 % Return succession list according to sort
-line_of_succession(X,Line_of_Succession):- findall(Y,offspring(Y,X),ChildNodes),ordering_by_birth_and_gender(ChildNodes,Line_of_Succession).
+line_of_succession(X,Line_of_Succession):- findall(Y,child_of(Y,X),ChildNodes),ordering_by_birth_and_gender(ChildNodes,Line_of_Succession).
