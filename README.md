@@ -15,6 +15,9 @@ python main.py
 
 # Lab 2 How to run
 ```
+Q1.3 unethical(stevey)
+```
+```
 Q2.1 line_of_succession(X, LineofSuccession)
 ```
 ```
